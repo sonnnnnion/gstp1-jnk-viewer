@@ -235,7 +235,7 @@ function overview() {
     ['1', 'Predict', 'AlphaFold 3 folds of every construct, alone and with GSTP1'],
     ['2', 'Analyse', 'Confidence and interface metrics read per chain pair'],
     ['3', 'Design', `${minis} mini-constructs spliced from two JNK segments`],
-    ['4', 'Validate', `Explicit-solvent MD, ${MD.length} constructs × 4 replicas`],
+    ['4', 'Validate', `Explicit-solvent MD, ${MD.length} constructs × 4 replicas at 50 ns`],
   ].map(([n, t, s]) =>
     `<div class="arcstep"><i>Step ${n}</i><b>${t}</b><span>${esc(s)}</span></div>`).join('');
 
@@ -245,7 +245,7 @@ function overview() {
       <div class="stat"><b>${minis}</b><span>mini-constructs designed</span></div>
       <div class="stat"><b>${folded}/${CS.length}</b><span>fold confidently (pLDDT &ge; 80)</span></div>
       <div class="stat"><b>${num(best, 2)}</b><span>best JNK&harr;GSTP1 pair ipTM</span></div>
-      <div class="stat"><b>${MD.length}&times;4</b><span>MD replicas, 5 ns each</span></div>
+      <div class="stat"><b>${MD.length}&times;4</b><span>MD replicas, 50 ns each</span></div>
     </div>
     <div class="arc" style="margin-top:12px">${arc}</div>
   </section>
@@ -424,7 +424,7 @@ function structures() {
   return `
   <section class="card">
     <h2>Structures</h2>
-    <p class="q">AlphaFold-designed constructs. Drag to turn the backbone; it spins on its own until you do.</p>
+    <p class="q">50 ns of simulation, played back. Drag to turn it; scrub to move through time.</p>
     <div class="sel" id="ssel">${pills}</div>
     <div class="viewer"><canvas id="cv"></canvas>
       <span class="vhint">drag to rotate</span></div>
